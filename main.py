@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import random
 import os
+import webbrowser
 
 app = Flask(__name__)
 
@@ -49,6 +50,8 @@ def edit():
                 questions.pop(index)
     return render_template("edit.html", questions=questions)
 
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 81))
+    webbrowser.open(f"http://127.0.0.1:{port}")
     app.run(host="0.0.0.0", port=port)
