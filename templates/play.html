@@ -1,0 +1,8 @@
+<h2>{{ question }}</h2>
+<form action="/submit" method="post">
+  {% for opt in options %}
+    <input type="radio" name="answer" value="{{ opt }}" required> {{ opt }}<br>
+  {% endfor %}
+  <input type="hidden" name="correct" value="{{ correct }}">
+  <button type="submit">Submit</button>
+</form>

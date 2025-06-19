@@ -1,0 +1,26 @@
+<h2>Edit Questions</h2>
+<form method="POST">
+  <input type="hidden" name="action" value="add">
+  Question: <input name="question"><br>
+  Option 1: <input name="opt1"><br>
+  Option 2: <input name="opt2"><br>
+  Option 3: <input name="opt3"><br>
+  Option 4: <input name="opt4"><br>
+  Correct Answer: <input name="correct"><br>
+  <button type="submit">Add Question</button>
+</form>
+
+<h3>Existing Questions</h3>
+<ul>
+  {% for q in questions %}
+    <li>
+      {{ loop.index0 }}. {{ q.question }}
+      <form method="POST" style="display:inline;">
+        <input type="hidden" name="action" value="delete">
+        <input type="hidden" name="index" value="{{ loop.index0 }}">
+        <button type="submit">Delete</button>
+      </form>
+    </li>
+  {% endfor %}
+</ul>
+<a href="/">Back to Menu</a>
