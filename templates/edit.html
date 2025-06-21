@@ -1,26 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Edit Questions{% endblock %}
+{% block content %}
 <h2>Edit Questions</h2>
-<form method="POST">
+<form method="POST" class="edit-form">
   <input type="hidden" name="action" value="add">
-  Question: <input name="question"><br>
-  Option 1: <input name="opt1"><br>
-  Option 2: <input name="opt2"><br>
-  Option 3: <input name="opt3"><br>
-  Option 4: <input name="opt4"><br>
-  Correct Answer: <input name="correct"><br>
+  <label>Question: <input name="question"></label><br>
+  <label>Option 1: <input name="opt1"></label><br>
+  <label>Option 2: <input name="opt2"></label><br>
+  <label>Option 3: <input name="opt3"></label><br>
+  <label>Option 4: <input name="opt4"></label><br>
+  <label>Correct Answer: <input name="correct"></label><br>
   <button type="submit">Add Question</button>
 </form>
 
 <h3>Existing Questions</h3>
-<ul>
+<ul class="question-list">
   {% for q in questions %}
-    <li>
-      {{ loop.index0 }}. {{ q.question }}
-      <form method="POST" style="display:inline;">
-        <input type="hidden" name="action" value="delete">
-        <input type="hidden" name="index" value="{{ loop.index0 }}">
-        <button type="submit">Delete</button>
-      </form>
-    </li>
+  <li>
+    {{ loop.index0 }}. {{ q.question }}
+    <form method="POST" class="delete-form">
+      <input type="hidden" name="action" value="delete">
+      <input type="hidden" name="index" value="{{ loop.index0 }}">
+      <button type="submit">Delete</button>
+    </form>
+  </li>
   {% endfor %}
 </ul>
-<a href="/">Back to Menu</a>
+<a class="back-link" href="/">Back to Menu</a>
+{% endblock %}

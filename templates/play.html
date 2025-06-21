@@ -1,8 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Play Quiz{% endblock %}
+{% block content %}
 <h2>{{ question }}</h2>
-<form action="/submit" method="post">
+<form action="/submit" method="post" class="quiz-form">
   {% for opt in options %}
-    <input type="radio" name="answer" value="{{ opt }}" required> {{ opt }}<br>
+  <label><input type="radio" name="answer" value="{{ opt }}" required> {{ opt }}</label><br>
   {% endfor %}
   <input type="hidden" name="correct" value="{{ correct }}">
   <button type="submit">Submit</button>
 </form>
+{% endblock %}
